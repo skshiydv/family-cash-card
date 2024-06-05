@@ -1,4 +1,4 @@
-package io.github.skshiydv.family.cash.card;
+package io.github.skshiydv.family.cash.cashcard;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
