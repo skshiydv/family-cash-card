@@ -14,15 +14,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CashCardTest {
     @Autowired
     private JacksonTester<CashCard> json;
-
     @Test
     public void serialize() throws IOException {
         CashCard newCashCard = new CashCard(99L, 123.45);
         Assertions.assertThat(json.write(newCashCard)).isStrictlyEqualToJson("expected.json");
-        Assertions.assertThat(json.write(newCashCard)).hasJsonPathStringValue("@.id");
-        Assertions.assertThat(json.write(newCashCard)).extractingJsonPathArrayValue("@.id").isEqualTo(99);
-        Assertions.assertThat(json.write(newCashCard)).hasJsonPathStringValue("@.amount");
-        Assertions.assertThat(json.write(newCashCard)).extractingJsonPathArrayValue("@.id").isEqualTo(123.45);
+        Assertions.assertThat(json.write(newCashCard)).hasJsonPathNumberValue("@.id");
+        Assertions.assertThat(json.write(newCashCard)).extractingJsonPathNumberValue("@.id").isEqualTo(99);
+        Assertions.assertThat(json.write(newCashCard)).hasJsonPathNumberValue("@.amount");
+        Assertions.assertThat(json.write(newCashCard)).extractingJsonPathNumberValue("@.amount").isEqualTo(123.45);
     }
 
     @Test
