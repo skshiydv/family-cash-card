@@ -83,6 +83,7 @@ class CashCardApplicationTest {
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         DocumentContext documentContext = JsonPath.parse(response.getBody());
         JSONArray read = documentContext.read("$[*]");
+
         assertThat(read.size()).isEqualTo(1);
         double amountOfFirstCashCard = documentContext.read("$[0].amount");
         assertThat(amountOfFirstCashCard).isEqualTo(150.00);
